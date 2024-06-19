@@ -11,11 +11,14 @@
 
   <!-- jQuery CDN -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+  <!-- CSS 링크 -->
+  <link href="main.css" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">Carrot Market</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -37,6 +40,18 @@
       </div>
     </div>
   </nav>
+
+  <div class="container mt-3">
+    <div class="product">
+      <div class="thumbnail" style="background-image: url('https://via.placeholder.com/350')"></div>
+      <div class="flex-grow-1 p-4">
+        <h5 class="title">아기다스 신발</h5>
+        <p class="date">2030년 1월 8일</p>
+        <p class="price">20000원</p>
+        <p class="float-end">♥0</p>
+      </div>
+    </div>
+  </div>
 
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
@@ -61,9 +76,19 @@
     db.collection('product').get().then((결과)=>{
       결과.forEach((doc)=>{
         console.log(doc.data())
+        var 템플릿 = `<div class="product">
+            <div class="thumbnail" style="background-image: url('https://via.placeholder.com/350')"></div>
+            <div class="flex-grow-1 p-4">
+              <h5 class="title">아기다스 신발</h5>
+              <p class="date">2030년 1월 8일</p>
+              <p class="price">20000원</p>
+              <p class="float-end">♥0</p>
+            </div>
+          </div>`;
+        $('.container').append(템플릿)
       })
     })
   </script>
-  
+ 
 </body>
 </html>
